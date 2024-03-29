@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Plantas</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/all.js"></script>
+    
+</head>
+<body>
+    <header>
+        <div id= "folha"
+            span class="fas fa-solid fa-leaf">
+        </div>
+        
+        <div class="rectangle"></div>
+        <h1> Cadastro de Plantas </h1>
+    </header>
+
+    <form id="form-cadastro" onsubmit="return false">
+        <div class="linha">
+            <label>Nome da planta<span style="color: whitesmoke;">*</span></label>
+            <input type="text" name="nomeplanta" maxlength="40" autocomplete="off" required />
+        </div>
+
+        <div class="linha">
+            <label>Espécie<span style="color: whitesmoke;">*</span></label>
+            <input type="text" name="especie" maxlength="80" required />
+        </div>
+
+        <div class="linha">
+            <label>Altura Máxima</label>
+            <select name="unidade">
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+            </select>
+            <input type="number" name="alturamaxima" step="0.01" min="0" />
+        </div>
+
+        <input type="submit" name="enviar" id="botao" value="Cadastrar" onclick="cadastro()" />
+    </form>
+
+    <section>
+        <br>
+        <div id = "cadastro-planta"></div>
+        <br>
+    </section>
+
+    <script>
+        function cadastro() {
+            let form = document.getElementById("form-cadastro");
+            let nomeplanta = form.nomeplanta.value.trim();
+            let especie = form.especie.value.trim();
+
+            if (nomeplanta === "") {
+                alert("Preencha o nome da planta!");
+                return false;
+            }
+            if (especie === "") {
+                alert("Preencha a espécie da planta!");
+                return false;
+            }
+
+            document.getElementById("cadastro-planta").innerHTML = "Planta cadastrada com sucesso!";
+        }
+    </script>
+</body>
+</html>
